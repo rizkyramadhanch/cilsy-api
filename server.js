@@ -11,18 +11,3 @@ var routes = require('./routes');
     routes(app);
     app.listen(port);
     console.log('Learn Node JS With Kiddy, RESTful API server started on: ' + port);
-
-var mysql = require('mysql');
-
-var conn = mysql.createConnection({
-    host: "192.168.1.79",
-    user: "root",
-    password: "12345678",
-    database: "nodejs_api"
-});
-
-conn.connect(function (err){
-    if(err) throw err;
-});
-
-module.exports = conn;
