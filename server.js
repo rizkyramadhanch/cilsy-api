@@ -15,7 +15,7 @@ var routes = require('./routes');
 var mysql = require('mysql');
 
 var conn = mysql.createConnection({
-    host: "localhost",
+    host: "192.168.1.79",
     user: "root",
     password: "12345678",
     database: "nodejs_api"
