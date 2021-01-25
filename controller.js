@@ -18,7 +18,6 @@ exports.index = function (req, res) {
 
 exports.findUsers = function (req, res) {
     var user_id = req.params.user_id;
-
     connection.query('SELECT * FROM person where id = ?',
         [user_id],
         function (error, rows, fields) {
@@ -42,7 +41,6 @@ exports.createUsers = function (req, res) {
             }
         });
 };
-
 exports.updateUsers = function (req, res) {
     var user_id = req.body.user_id;
     var first_name = req.body.first_name;
@@ -58,38 +56,14 @@ exports.updateUsers = function (req, res) {
         });
 };
 exports.deleteUsers = function (req, res) {
-        var user_id = req.body.user_id;
-        connection.query('DELETE FROM person WHERE id = ?',
-                [user_id],
-                function (error, rows, fields) {
-                    if (error) {
-                        console.log(error)
-                    } else {
-                        response.ok("Berhasil menghapus user!", res)
-
-                        exports.updateUsers = function (req, res) {
-                            var user_id = req.body.user_id;
-                            var first_name = req.body.first_name;
-                            var last_name = req.body.last_name;
-                            connection.query('UPDATE person SET first_name = ?, last_name = ? WHERE id = ?',
-                                [first_name, last_name, user_id],
-                                function (error, rows, fields) {
-                                    if (error) {
-                                        console.log(error)
-                                    } else {
-                                        response.ok("Berhasil merubah user!", res)
-                                    }
-                                });
-                        };
-                        exports.deleteUsers = function (req, res) {
-                            var user_id = req.body.user_id;
-                            connection.query('DELETE FROM person WHERE id = ?',
-                                [user_id],
-                                function (error, rows, fields) {
-                                    if (error) {
-                                        console.log(error)
-                                    } else {
-                                        response.ok("Berhasil menghapus user!", res)
-                                    }
-                                });
-                        };
+    var user_id = req.body.user_id;
+    connection.query('DELETE FROM person WHERE id = ?',
+        [user_id],
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error)
+            } else {
+                response.ok("Berhasil menghapus user!", res)
+            }
+        });
+};
