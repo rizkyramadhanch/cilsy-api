@@ -1,10 +1,13 @@
 var mysql = require('mysql');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 var conn = mysql.createConnection({
-    host: "192.168.1.79",
-    user: "root",
-    password: "12345678",
-    database: "nodejs_api"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 conn.connect(function (err){
@@ -12,3 +15,18 @@ conn.connect(function (err){
 });
 
 module.exports = conn;
+
+
+// config.js 
+// const dotenv = require('dotenv');
+// const result = dotenv.config();
+// if (result.error) {
+//   throw result.error;
+// }
+// const { parsed: envs } = result;
+// console.log(envs);
+// module.exports = envs;
+
+
+// config.js
+
